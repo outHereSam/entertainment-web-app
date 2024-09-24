@@ -1,0 +1,26 @@
+@use '../../../styles/functions' as *
+@use '../../../styles/variables' as *
+@use '../../../styles/mixins' as *
+
+nav 
+    background-color: $semi-dark-blue
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 18px 16px
+
+    .navigation
+        display: flex
+        align-items: center
+        gap: 24px
+
+    .avatar
+        width: 24px
+        height: 24px
+        border: solid 1px $text-main
+        border-radius: 50%
+        
+        img 
+            width: 100%
+            height: 100%
+            object-fit: cover
