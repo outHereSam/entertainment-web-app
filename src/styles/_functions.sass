@@ -1,0 +1,11 @@
+
+$heading-font-sizes: ('xs': 18px, 's': 24px, 'm': 24px, 'l': 32px)
+$body-font-sizes: ('s': 13px, 'm': 15px)
+
+@function fontSize($type, $size)
+    @if $type == 'heading'
+        @return map-get($heading-font-sizes, $size)
+    @else if $type == 'body'
+        @return map-get($body-font-sizes, $size)
+    @else
+        @error 'Invalid font type'
