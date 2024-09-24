@@ -1,0 +1,24 @@
+@use '../../../styles/_variables' as *
+@use '../../../styles/_functions' as *
+.search
+    margin: 24px 0
+    display: flex
+    align-items: center
+    gap: 16px
+
+    .search__input
+        width: 100%
+        background: none
+        appearance: none
+        outline: none
+        border: none
+        font-size: getFontSize('body', 'm')
+        color: $text-main
+        padding: 14px 0 14px 0
+        caret-color: $red-accent
+
+        &::placeholder
+            color: $text-placeholder
+
+        &:focus
+            border-bottom: solid 1px $greyish-blue

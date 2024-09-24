@@ -10,11 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../../state/app.state';
 import { AsyncPipe } from '@angular/common';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
 
 @Component({
   selector: 'app-media-list',
   standalone: true,
-  imports: [AsyncPipe, NavbarComponent],
+  imports: [AsyncPipe, NavbarComponent, SearchbarComponent],
   templateUrl: './media-list.component.html',
   styleUrl: './media-list.component.sass',
 })
