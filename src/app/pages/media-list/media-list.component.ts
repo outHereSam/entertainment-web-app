@@ -29,10 +29,9 @@ export class MediaListComponent {
     this.filteredMediaItems$ = this.route.paramMap.pipe(
       switchMap((params) => {
         this.category = params.get('category');
-        console.log(this.category);
         return this.store.select(selectFilteredMediaItems(this.category)); // Ensure this selector accesses the right data
       })
     );
-    // console.log(this.category);
+    this.filteredMediaItems$.subscribe((items) => console.log(items));
   }
 }

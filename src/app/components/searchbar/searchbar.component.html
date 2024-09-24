@@ -5,9 +5,35 @@
       fill="#FFF"
     />
   </svg>
+
+  @if (category === null) {
   <input
     type="text"
     class="search__input"
     placeholder="Search for movies or tv series"
+  />
+  } @else if (category === 'movie') {
+  <input
+    type="text"
+    class="search__input"
+    [placeholder]="'Search for ' + category + 's'"
+  />
+  } @else if (category === 'bookmarks') {
+  <input
+    type="text"
+    class="search__input"
+    placeholder="Search for bookmarked shows"
+  />
+  } @else {
+  <input
+    type="text"
+    class="search__input"
+    [placeholder]="'Search for ' + category"
+  />
+  }
+  <input
+    type="hidden"
+    class="search__input"
+    [placeholder]="'Search for ' + category"
   />
 </div>
