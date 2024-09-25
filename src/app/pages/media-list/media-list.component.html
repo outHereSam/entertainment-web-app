@@ -1,41 +1,43 @@
-<app-navbar />
-<div class="container">
-  <app-searchbar />
+<main>
+  <app-navbar />
+  <div class="container">
+    <app-searchbar />
 
-  @if (filteredMediaItems$ | async; as filteredMediaItems) {
-  <div class="content">
-    @if (category === null) {
-    <div class="trending">
-      <h4 class="section-title">Trending</h4>
-      <div class="trending-movies">
-        @for (movie of filteredMediaItems; track movie.title) { @if
-        (movie.isTrending) {
-        <app-movie-card [movie]="movie" [isTrending]="true" />
-        } }
+    @if (filteredMediaItems$ | async; as filteredMediaItems) {
+    <div class="content">
+      @if (category === null) {
+      <div class="trending">
+        <h4 class="section-title">Trending</h4>
+        <div class="trending-movies">
+          @for (movie of filteredMediaItems; track movie.title) { @if
+          (movie.isTrending) {
+          <app-movie-card [movie]="movie" [isTrending]="true" />
+          } }
+        </div>
       </div>
-    </div>
-    <div class="recommended">
-      <h4 class="section-title">Recommended for you</h4>
-      <div class="recommended-movies">
-        @for (movie of filteredMediaItems; track movie.title) { @if
-        (!movie.isTrending) {
-        <app-movie-card [movie]="movie" [isTrending]="false" />
-        } }
+      <div class="recommended">
+        <h4 class="section-title">Recommended for you</h4>
+        <div class="recommended-movies">
+          @for (movie of filteredMediaItems; track movie.title) { @if
+          (!movie.isTrending) {
+          <app-movie-card [movie]="movie" [isTrending]="false" />
+          } }
+        </div>
       </div>
-    </div>
-    } @else {
-    <div class="recommended">
-      <h4 class="section-title">
-        {{ category === "movie" ? "Movies" : category }}
-      </h4>
-      <div class="recommended-movies">
-        @for (movie of filteredMediaItems; track movie.title) { @if
-        (!movie.isTrending) {
-        <app-movie-card [movie]="movie" [isTrending]="false" />
-        } }
+      } @else {
+      <div class="recommended">
+        <h4 class="section-title">
+          {{ category === "movie" ? "Movies" : "TV Series" }}
+        </h4>
+        <div class="recommended-movies">
+          @for (movie of filteredMediaItems; track movie.title) { @if
+          (!movie.isTrending) {
+          <app-movie-card [movie]="movie" [isTrending]="false" />
+          } }
+        </div>
       </div>
+      }
     </div>
     }
   </div>
-  }
-</div>
+</main>

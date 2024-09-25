@@ -2,8 +2,23 @@
 @use '../../../styles/variables' as *
 @use '../../../styles/mixins' as *
 
+main
+    // display: flex
+    flex-direction: column
+
+    @include breakpoint('large')
+        flex-direction: row
+
 .container
     padding: 0 16px 60px 16px
+    max-width: 1140px
+
+    @include breakpoint('medium')
+        padding: 0 24px 60px 24px
+
+    @include breakpoint('large')
+        margin-left: 128px
+        padding: 0 32px 60px 32px
 
     .content
         .section-title
@@ -24,7 +39,7 @@
             grid-row-gap: 16px
 
             @include breakpoint('medium')
-                grid-template-columns: repeat(3, 1fr)
-
-            @include breakpoint('large')
                 grid-template-columns: repeat(4, 1fr)
+
+            // @include breakpoint('large')
+            //     grid-template-columns: repeat(4, 1fr)

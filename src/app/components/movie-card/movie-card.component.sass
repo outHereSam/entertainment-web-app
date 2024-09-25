@@ -10,6 +10,11 @@
     position: relative
     overflow: hidden
 
+    @include breakpoint('medium')
+        width: 470px
+        height: 230px
+
+
     .card-bg
         width: 100%
         height: 100%
@@ -68,7 +73,6 @@
 // Regular movies
 
 .movie-card
-    // width: 164px
     position: relative
 
     .card-bg
