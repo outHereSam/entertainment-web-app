@@ -9,6 +9,10 @@
   <input
     type="text"
     class="search__input"
-    placeholder="Search for movies or tv series"
+    placeholder="{{
+      category
+        ? 'Search for ' + category
+        : 'Search for movies, tv shows, and more'
+    }}"
   />
 </div>

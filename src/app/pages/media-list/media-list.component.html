@@ -27,7 +27,7 @@
       } @else {
       <div class="recommended">
         <h4 class="section-title">
-          {{ category === "movie" ? "Movies" : "TV Series" }}
+          {{ category === "movie" ? "Movies" : category }}
         </h4>
         <div class="recommended-movies">
           @for (movie of filteredMediaItems; track movie.title) { @if
