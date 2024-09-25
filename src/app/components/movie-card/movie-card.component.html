@@ -3,11 +3,49 @@
   <div class="card-bg">
     <picture>
       <source
-        media="(min-width: 765px)"
+        media="(min-width: 576px)"
         srcset="{{ movie.thumbnail.trending.large }}"
       />
       <img
         src="{{ movie.thumbnail.trending.small }}"
+        alt="{{ movie.title }} Screenshot"
+      />
+    </picture>
+  </div>
+  <div class="info">
+    <div class="small-details">
+      <span>{{ movie.year }}</span> •
+      <span class="category"
+        ><img
+          src="{{
+            movie.category === 'Movie'
+              ? '../../../../../assets/icon-category-movie.svg'
+              : '../../../../../assets/icon-category-tv.svg'
+          }}"
+          alt=""
+        />{{ movie.category }}</span
+      >
+      •
+      <span>{{ movie.rating }}</span>
+    </div>
+    <h3>{{ movie.title }}</h3>
+  </div>
+  <button class="bookmark"></button>
+</div>
+} @else {
+<div class="movie-card">
+  <div class="card-bg">
+    <picture>
+      <source
+        media="(min-width: 576px)"
+        srcset="{{ movie.thumbnail.regular.medium }}"
+      />
+      <source
+        media="(min-width: 765px)"
+        srcset="{{ movie.thumbnail.regular.large }}"
+      />
+      <img
+        src="{{ movie.thumbnail.regular.small }}"
         alt="{{ movie.title }} Screenshot"
       />
     </picture>

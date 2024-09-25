@@ -2,6 +2,7 @@
 @use '../../../styles/variables' as *
 @use '../../../styles/mixins' as *
 
+// Trending movies card
 .trending-movie-card
     width: 240px
     height: 140px
@@ -21,7 +22,7 @@
             width: 100%
             height: 100%
             object-fit: cover
-    
+
     .info
         background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75))
         position: absolute
@@ -51,6 +52,65 @@
             line-height: 1
             margin: 4px 0 0 0
         
+    .bookmark
+        width: 32px
+        height: 32px
+        background-color: $button-bg
+        position: absolute
+        top: 8px
+        right: 8px
+        border: none
+        border-radius: 50%
+        background-image: url('../../../assets/icon-bookmark-empty.svg')
+        background-repeat: no-repeat
+        background-position: center
+
+// Regular movies
+
+.movie-card
+    // width: 164px
+    position: relative
+
+    .card-bg
+        width: 100%
+        height: 110px
+        border-radius: 8px
+        overflow: hidden
+
+        @include breakpoint('medium')
+            height: 140px
+
+        @include breakpoint('large')
+            height: 174px
+
+        img
+            width: 100%
+            height: 100%
+            object-fit: cover
+
+    .info
+        .small-details
+            margin-top: 8px
+            display: flex
+            align-items: center
+            gap: 8px
+            color: $text-secondary
+
+            span
+                font-size: fontSize('body', 's')
+                font-weight: 300
+
+            .category
+                display: flex
+                align-items: center
+                gap: 6px
+
+        h3
+            font-size: fontSize('body', 'm')
+            font-weight: 500
+            line-height: 1
+            margin: 4px 0 0 0
+
     .bookmark
         width: 32px
         height: 32px

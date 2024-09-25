@@ -11,13 +11,17 @@
         @for (movie of filteredMediaItems; track movie.title) { @if
         (movie.isTrending) {
         <app-movie-card [movie]="movie" [isTrending]="true" />
-        } @else {
-        <app-movie-card [movie]="movie" [isTrending]="false" />
         } }
       </div>
     </div>
     <div class="recommended">
       <h4 class="section-title">Recommended for you</h4>
+      <div class="recommended-movies">
+        @for (movie of filteredMediaItems; track movie.title) { @if
+        (!movie.isTrending) {
+        <app-movie-card [movie]="movie" [isTrending]="false" />
+        } }
+      </div>
     </div>
     } @else {
     <div class="recommended">
