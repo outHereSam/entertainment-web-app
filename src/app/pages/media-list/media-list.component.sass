@@ -35,6 +35,11 @@ main
             display: flex
             gap: 16px
             margin: 0 0 24px 0
+            -ms-overflow-style: none
+            scrollbar-width: none
+
+            &::-webkit-scrollbar
+                display: none
 
         .recommended-movies
             display: grid
