@@ -20,19 +20,20 @@ export class BookmarksService {
   }
 
   findBookmark(media: Media) {
-    return this.bookmarks$.value.includes(media);
+    return this.bookmarks$.value.some((item) => item.title === media.title);
   }
 
   toggleBookmark(media: Media) {
     // console.log(media);
-    if (this.bookmarks$.value.includes(media)) {
-      this.bookmarks$.next(
-        this.bookmarks$.value.filter((item) => item !== media)
+    const currentBookmarks = this.bookmarks$.value;
+    if (this.findBookmark(media)) {
+      const updatedBookmarks = currentBookmarks.filter(
+        (item) => item.title !== media.title
       );
-      localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks$.value));
+      this.bookmarks$.next(updatedBookmarks);
     } else {
-      this.bookmarks$.next([...this.bookmarks$.value, media]);
-      localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks$.value));
+      this.bookmarks$.next([...currentBookmarks, media]);
     }
+    localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks$.value));
   }
 }
