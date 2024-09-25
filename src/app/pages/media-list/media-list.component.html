@@ -28,6 +28,12 @@
       <h4 class="section-title">
         {{ category === "movie" ? "Movies" : category }}
       </h4>
+      <div class="recommended-movies">
+        @for (movie of filteredMediaItems; track movie.title) { @if
+        (!movie.isTrending) {
+        <app-movie-card [movie]="movie" [isTrending]="false" />
+        } }
+      </div>
     </div>
     }
   </div>
