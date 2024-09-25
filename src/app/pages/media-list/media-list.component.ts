@@ -11,11 +11,12 @@ import { AppState } from '../../state/app.state';
 import { AsyncPipe } from '@angular/common';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 
 @Component({
   selector: 'app-media-list',
   standalone: true,
-  imports: [AsyncPipe, NavbarComponent, SearchbarComponent],
+  imports: [AsyncPipe, NavbarComponent, SearchbarComponent, MovieCardComponent],
   templateUrl: './media-list.component.html',
   styleUrl: './media-list.component.sass',
 })
@@ -29,9 +30,8 @@ export class MediaListComponent {
     this.filteredMediaItems$ = this.route.paramMap.pipe(
       switchMap((params) => {
         this.category = params.get('category');
-        return this.store.select(selectFilteredMediaItems(this.category)); // Ensure this selector accesses the right data
+        return this.store.select(selectFilteredMediaItems(this.category));
       })
     );
-    this.filteredMediaItems$.subscribe((items) => console.log(items));
   }
 }

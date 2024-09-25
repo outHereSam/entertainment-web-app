@@ -1,2 +1,18 @@
+@use '../../../styles/functions' as *
+@use '../../../styles/variables' as *
+@use '../../../styles/mixins' as *
+
 .container
     padding: 0 16px
+
+    .content
+        .section-title
+            font-size: fontSize('heading', 'm')
+            font-weight: 300
+            margin-bottom: 16px
+
+        .trending-movies
+            overflow: scroll
+            display: flex
+            gap: 16px
+            margin: 0 0 24px 0

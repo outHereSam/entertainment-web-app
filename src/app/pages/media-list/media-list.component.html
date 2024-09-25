@@ -1,4 +1,31 @@
 <app-navbar />
 <div class="container">
   <app-searchbar />
+
+  @if (filteredMediaItems$ | async; as filteredMediaItems) {
+  <div class="content">
+    @if (category === null) {
+    <div class="trending">
+      <h4 class="section-title">Trending</h4>
+      <div class="trending-movies">
+        @for (movie of filteredMediaItems; track movie.title) { @if
+        (movie.isTrending) {
+        <app-movie-card [movie]="movie" [isTrending]="true" />
+        } @else {
+        <app-movie-card [movie]="movie" [isTrending]="false" />
+        } }
+      </div>
+    </div>
+    <div class="recommended">
+      <h4 class="section-title">Recommended for you</h4>
+    </div>
+    } @else {
+    <div class="recommended">
+      <h4 class="section-title">
+        {{ category === "movie" ? "Movies" : category }}
+      </h4>
+    </div>
+    }
+  </div>
+  }
 </div>

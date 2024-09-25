@@ -34,9 +34,10 @@ export class SearchbarComponent {
       .pipe(
         map((event: Event) => (event.target as HTMLInputElement).value),
         debounceTime(500),
-        tap((query) =>
-          this.store.dispatch(setSearchItem({ searchItem: query }))
-        )
+        tap((query) => {
+          console.log(query);
+          this.store.dispatch(setSearchItem({ searchItem: query }));
+        })
       )
       .subscribe();
   }

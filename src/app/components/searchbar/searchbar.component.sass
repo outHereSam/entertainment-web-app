@@ -12,13 +12,15 @@
         appearance: none
         outline: none
         border: none
-        font-size: getFontSize('body', 'm')
+        font-size: fontSize('body', 'm')
         color: $text-main
         padding: 14px 0 14px 0
         caret-color: $red-accent
 
         &::placeholder
             color: $text-placeholder
+            font-family: $font-stack
+            font-weight: 300
 
         &:focus
             border-bottom: solid 1px $greyish-blue
