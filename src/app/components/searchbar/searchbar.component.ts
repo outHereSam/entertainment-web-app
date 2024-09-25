@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { debounceTime, fromEvent, map, switchMap, tap } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { debounceTime, fromEvent, map, Observable, switchMap, tap } from 'rxjs';
 import { setSearchItem } from '../../state/media/media.actions';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { AppState } from '../../state/app.state';
 import { ActivatedRoute } from '@angular/router';
+import { selectSearchItem } from '../../state/media/media.selectors';
 
 @Component({
   selector: 'app-searchbar',
@@ -13,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './searchbar.component.sass',
 })
 export class SearchbarComponent {
+  searchItem$!: Observable<string>;
+  searchValue!: string;
   category: string | null = null;
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
@@ -40,5 +43,19 @@ export class SearchbarComponent {
         })
       )
       .subscribe();
+    this.searchItem$ = this.store.select(selectSearchItem);
+    this.searchItem$.subscribe((searchItem) => (this.searchValue = searchItem));
+  }
+
+  getPlaceholder() {
+    if (this.category === 'movie') {
+      return `Search for movies`;
+    } else if (this.category === 'tv series') {
+      return `Search for TV series`;
+    } else if (this.category === null) {
+      return 'Search for movies, tv shows, and more';
+    } else {
+      return 'Search for bookmarked shows/movies';
+    }
   }
 }

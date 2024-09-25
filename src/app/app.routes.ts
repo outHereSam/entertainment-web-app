@@ -19,10 +19,17 @@ export const routes: Routes = [
       ),
   },
   {
-    path: ':category',
+    path: 'categories/:category',
     loadComponent: () =>
       import('./pages/media-list/media-list.component').then(
         (m) => m.MediaListComponent
+      ),
+  },
+  {
+    path: 'bookmarks',
+    loadComponent: () =>
+      import('./pages/bookmarks/bookmarks.component').then(
+        (m) => m.BookmarksComponent
       ),
   },
   {

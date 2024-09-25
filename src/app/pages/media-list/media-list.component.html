@@ -18,10 +18,9 @@
       <div class="recommended">
         <h4 class="section-title">Recommended for you</h4>
         <div class="recommended-movies">
-          @for (movie of filteredMediaItems; track movie.title) { @if
-          (!movie.isTrending) {
+          @for (movie of filteredMediaItems; track movie.title) {
           <app-movie-card [movie]="movie" [isTrending]="false" />
-          } }
+          }
         </div>
       </div>
       } @else {
@@ -30,10 +29,10 @@
           {{ category === "movie" ? "Movies" : category }}
         </h4>
         <div class="recommended-movies">
-          @for (movie of filteredMediaItems; track movie.title) { @if
-          (!movie.isTrending) {
+          @for (movie of filteredMediaItems; track movie.title) {
+
           <app-movie-card [movie]="movie" [isTrending]="false" />
-          } }
+          }
         </div>
       </div>
       }

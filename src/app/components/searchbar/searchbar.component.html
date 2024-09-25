@@ -7,12 +7,9 @@
   </svg>
 
   <input
+    [value]="searchValue"
     type="text"
     class="search__input"
-    placeholder="{{
-      category
-        ? 'Search for ' + category
-        : 'Search for movies, tv shows, and more'
-    }}"
+    [placeholder]="getPlaceholder()"
   />
 </div>
