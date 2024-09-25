@@ -41,7 +41,7 @@
     <h3>{{ movie.title }}</h3>
   </div>
   <button
-    [class]="bookmarksService.findBookmark(movie) ? 'bookmark' : 'bookmarked'"
+    [class]="isBookmarked ? 'bookmarked' : 'bookmark'"
     (click)="onBookmarkClick()"
   >
     <svg
@@ -112,7 +112,7 @@
     <h3>{{ movie.title }}</h3>
   </div>
   <button
-    [class]="bookmarksService.findBookmark(movie) ? 'bookmark' : 'bookmarked'"
+    [class]="isBookmarked ? 'bookmarked' : 'bookmark'"
     (click)="onBookmarkClick()"
   >
     <svg

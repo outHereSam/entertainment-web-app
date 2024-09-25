@@ -13,9 +13,19 @@ export class MovieCardComponent {
   @Input() movie!: Media;
   @Input() isTrending!: boolean;
 
+  isBookmarked: boolean = false;
+
   constructor(protected bookmarksService: BookmarksService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isBookmarked = this.bookmarksService.findBookmark(this.movie);
+
+    this.bookmarksService.getBookmarkedMedia().subscribe((bookmarkedMedia) => {
+      this.isBookmarked = bookmarkedMedia.some(
+        (item) => item.title === this.movie.title
+      );
+    });
+  }
 
   onBookmarkClick() {
     // console.log(this.movie);
