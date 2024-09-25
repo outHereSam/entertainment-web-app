@@ -1,0 +1,67 @@
+@use '../../../styles/functions' as *
+@use '../../../styles/variables' as *
+@use '../../../styles/mixins' as *
+
+main
+    margin: 48px auto
+    max-width: 400px
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 58px
+    padding: 0 24px
+
+    .card
+        background-color: $semi-dark-blue
+        padding: 24px
+        width: 100%
+        border-radius: 10px
+
+        h1
+            font-size: fontSize('heading', 'l')
+            font-weight: 300
+            margin: 0 0 40px 0
+
+        form
+            width: 100%
+            display: flex
+            flex-direction: column
+            gap: 24px
+
+            input
+                background: none
+                border: none
+                outline: none
+                color: $text-main
+                font-size: fontSize('body', 'm')
+                font-weight: 300
+                padding: 16px
+                border-bottom: solid 1px $greyish-blue
+
+                &::placeholder
+                    font-size: fontSize('body', 'm')
+                    color: $text-placeholder
+                    font-family: $font-stack
+                    font-weight: 300
+
+            button
+                border: none
+                appearance: none
+                outline: none
+                font-size: fontSize('body', 'm')
+                color: $text-main
+                font-weight: 300
+                background-color: $red-accent
+                padding: 14px 0
+                border-radius: 6px
+                margin: 16px 0 24px 0
+
+        p
+            font-size: fontSize('body', 'm')
+            font-weight: 300
+            text-align: center
+
+            a
+                color: $red-accent
+            
+            
