@@ -61,19 +61,6 @@
 
             @include breakpoint('medium')
                 font-size: fontSize('heading', 's')
-        
-    .bookmark
-        width: 32px
-        height: 32px
-        background-color: $button-bg
-        position: absolute
-        top: 8px
-        right: 8px
-        border: none
-        border-radius: 50%
-        background-image: url('../../../assets/icon-bookmark-empty.svg')
-        background-repeat: no-repeat
-        background-position: center
 
 // Regular movies
 
@@ -123,15 +110,26 @@
             @include breakpoint('medium')
                 font-size: fontSize('heading', 'xs')
 
-    .bookmark
-        width: 32px
-        height: 32px
-        background-color: $button-bg
-        position: absolute
-        top: 8px
-        right: 8px
-        border: none
-        border-radius: 50%
-        background-image: url('../../../assets/icon-bookmark-empty.svg')
-        background-repeat: no-repeat
-        background-position: center
+.bookmark
+    width: 32px
+    height: 32px
+    background-color: $button-bg
+    position: absolute
+    top: 8px
+    right: 8px
+    border: none
+    border-radius: 50%
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: 0.2s ease-in-out
+
+    &:hover
+        background-color: $text-main
+
+        svg path
+            stroke: $dark-blue-bg
+
+.full
+    display: none

@@ -30,6 +30,11 @@ nav
         @include breakpoint('large')
             flex-direction: column
 
+        a
+            &:hover
+                svg path
+                    fill: $red-accent
+
     .avatar
         width: 24px
         height: 24px
