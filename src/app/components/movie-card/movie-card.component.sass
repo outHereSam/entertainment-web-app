@@ -14,7 +14,6 @@
         width: 470px
         height: 230px
 
-
     .card-bg
         width: 100%
         height: 100%
@@ -46,6 +45,9 @@
                 font-size: fontSize('body', 's')
                 font-weight: 300
 
+                @include breakpoint('medium')
+                    font-size: fontSize('body', 'm')
+
             .category
                 display: flex
                 align-items: center
@@ -56,6 +58,9 @@
             font-weight: 500
             line-height: 1
             margin: 4px 0 0 0
+
+            @include breakpoint('medium')
+                font-size: fontSize('heading', 's')
         
     .bookmark
         width: 32px
@@ -114,6 +119,9 @@
             font-weight: 500
             line-height: 1
             margin: 4px 0 0 0
+
+            @include breakpoint('medium')
+                font-size: fontSize('heading', 'xs')
 
     .bookmark
         width: 32px
