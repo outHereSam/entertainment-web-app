@@ -26,6 +26,9 @@ main
             font-weight: 300
             margin-bottom: 16px
 
+            @include breakpoint('medium')
+                font-size: fontSize('heading', 'l')
+
         .trending-movies
             overflow: scroll
             display: flex
@@ -40,6 +43,8 @@ main
 
             @include breakpoint('medium')
                 grid-template-columns: repeat(4, 1fr)
+                grid-column-gap: 30px
+                grid-row-gap: 24px
 
             // @include breakpoint('large')
             //     grid-template-columns: repeat(4, 1fr)

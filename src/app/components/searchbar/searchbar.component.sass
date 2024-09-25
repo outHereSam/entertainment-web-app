@@ -1,5 +1,7 @@
 @use '../../../styles/_variables' as *
 @use '../../../styles/_functions' as *
+@use '../../../styles/_mixins' as *
+
 .search
     margin: 24px 0
     display: flex
@@ -16,6 +18,9 @@
         color: $text-main
         padding: 14px 0 14px 0
         caret-color: $red-accent
+
+        @include breakpoint('medium')
+            font-size: fontSize('heading', 'm')
 
         &::placeholder
             color: $text-placeholder
