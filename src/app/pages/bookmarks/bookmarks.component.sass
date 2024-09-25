@@ -12,3 +12,35 @@
     @include breakpoint('large')
         margin-left: 128px
         padding: 0 32px 60px 32px
+
+    .content
+        .section-title
+            font-size: fontSize('heading', 'm')
+            font-weight: 300
+            margin-bottom: 16px
+            text-transform: capitalize
+
+            @include breakpoint('medium')
+                font-size: fontSize('heading', 'l')
+
+        .trending-movies
+            overflow: scroll
+            display: flex
+            gap: 16px
+            margin: 0 0 24px 0
+            -ms-overflow-style: none
+            scrollbar-width: none
+
+            &::-webkit-scrollbar
+                display: none
+
+        .recommended-movies
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            grid-column-gap: 15px
+            grid-row-gap: 16px
+
+            @include breakpoint('medium')
+                grid-template-columns: repeat(4, 1fr)
+                grid-column-gap: 30px
+                grid-row-gap: 24px

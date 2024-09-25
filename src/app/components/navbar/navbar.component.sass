@@ -18,6 +18,7 @@ nav
         flex-direction: column
         justify-content: space-between
         height: 80vh
+        // height: 100%
         align-items: center
         position: fixed
         z-index: 999
@@ -29,6 +30,8 @@ nav
 
         @include breakpoint('large')
             flex-direction: column
+            flex-grow: 1
+            margin-top: 75px
 
         a
             &:hover

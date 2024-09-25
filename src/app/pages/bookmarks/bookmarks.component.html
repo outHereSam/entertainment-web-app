@@ -2,5 +2,19 @@
   <app-navbar />
   <div class="container">
     <app-searchbar />
+
+    <div class="content">
+      @if (bookmarks$ | async; as bookmarks) {
+      <div class="recommended">
+        <h4 class="section-title">Bookmarked Movies</h4>
+        <div class="recommended-movies">
+          @for (movie of bookmarks; track movie.title) {
+
+          <app-movie-card [movie]="movie" [isTrending]="false" />
+          }
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </main>
