@@ -28,7 +28,20 @@ main
             flex-direction: column
             gap: 24px
 
+            .input-group
+                position: relative
+                border-bottom: solid 1px $greyish-blue
+
+            small
+                color: $red-accent
+                font-size: fontSize('body', 's')
+                font-weight: 300
+                position: absolute
+                right: 17px
+                top: 16px
+
             input
+                width: 100%
                 caret-color: $red-accent
                 background: none
                 border: none
@@ -37,7 +50,10 @@ main
                 font-size: fontSize('body', 'm')
                 font-weight: 300
                 padding: 16px
-                border-bottom: solid 1px $greyish-blue
+                // border-bottom: solid 1px $greyish-blue
+
+                &:focus
+                    border-bottom: solid 1px $text-main
 
                 &::placeholder
                     font-size: fontSize('body', 'm')
