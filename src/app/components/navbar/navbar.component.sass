@@ -8,6 +8,7 @@ nav
     justify-content: space-between
     align-items: center
     padding: 18px 16px
+    position: relative
 
     @include breakpoint('medium')
         margin: 24px
@@ -43,6 +44,7 @@ nav
         height: 24px
         border: solid 1px $text-main
         border-radius: 50%
+        cursor: pointer
         
         img 
             width: 100%
@@ -52,3 +54,19 @@ nav
     .activeLink
         svg path
             fill: $text-main
+
+    .menu
+        display: none
+        padding: 15px
+        position: absolute
+        right: 10px
+        top: 50px
+        background-color: $semi-dark-blue
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+
+        button 
+            border: none
+            background: none
+            color: $red-accent
+            cursor: pointer
+            font-size: fontSize('body', 'm')

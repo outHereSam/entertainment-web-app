@@ -21,9 +21,7 @@ export class AuthService {
   }
 
   loginUser(data: UserData): Observable<unknown> {
-    return this.http
-      .post<UserData>(`${this.apiUrl}/login`, data)
-      .pipe(tap((response) => console.log('Login response: ', response)));
+    return this.http.post<UserData>(`${this.apiUrl}/login`, data);
   }
 
   getAuthToken(): string | null {

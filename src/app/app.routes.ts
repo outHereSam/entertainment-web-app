@@ -1,6 +1,18 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/media-list/media-list.component').then(
+        (m) => m.MediaListComponent
+      ),
+  },
+
+  // Auth routes
+
   {
     path: 'login',
     loadComponent: () =>
@@ -10,13 +22,6 @@ export const routes: Routes = [
     path: 'signup',
     loadComponent: () =>
       import('./pages/signup/signup.component').then((m) => m.SignupComponent),
-  },
-  {
-    path: '',
-    loadComponent: () =>
-      import('./pages/media-list/media-list.component').then(
-        (m) => m.MediaListComponent
-      ),
   },
   {
     path: 'categories/:category',
