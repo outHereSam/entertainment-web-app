@@ -4,15 +4,12 @@ import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     loadComponent: () =>
       import('./pages/media-list/media-list.component').then(
         (m) => m.MediaListComponent
       ),
+    canActivate: [authGuard],
   },
-
-  // Auth routes
-
   {
     path: 'login',
     loadComponent: () =>
@@ -29,6 +26,7 @@ export const routes: Routes = [
       import('./pages/media-list/media-list.component').then(
         (m) => m.MediaListComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'bookmarks',
@@ -36,12 +34,13 @@ export const routes: Routes = [
       import('./pages/bookmarks/bookmarks.component').then(
         (m) => m.BookmarksComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: '**',
     loadComponent: () =>
-      import('./pages/media-list/media-list.component').then(
-        (m) => m.MediaListComponent
+      import('./pages/not-found/not-found.component').then(
+        (m) => m.NotFoundComponent
       ),
   },
 ];
