@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -8,6 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './signup.component.sass',
 })
 export class SignupComponent {
+  constructor(private authService: AuthService, private router: Router) {}
   signupForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -24,26 +26,30 @@ export class SignupComponent {
         Validators.required,
         Validators.minLength(6),
       ]),
-      confirmPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+      confirmPassword: new FormControl('', [Validators.required]),
     },
     { validators: this.checkPasswordsMatch }
   );
 
   checkPasswordsMatch(control: AbstractControl) {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
-    if (password !== confirmPassword) {
-      return { notMatch: true };
-    }
-    return null;
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { notMatch: true };
   }
 
   onSubmit() {
     if (this.signupForm.valid) {
-      console.log(this.signupForm.value);
+      const { email, password } = this.signupForm.value;
+      const signupData = { email, password };
+      this.authService.signupUser(signupData).subscribe({
+        next: (response) => {
+          console.log('Response from sign up:', response);
+          this.router.navigate(['login']);
+        },
+        error: (error) => {
+          console.log('Error from sign up:', error);
+        },
+      });
     } else {
       console.log(this.signupForm.errors);
       this.signupForm.markAllAsTouched();

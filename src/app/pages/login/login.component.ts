@@ -6,7 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.sass',
 })
 export class LoginComponent {
+  constructor(private authService: AuthService, private router: Router) {}
   signInForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -26,9 +28,18 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.signInForm.valid) {
-      console.log(this.signInForm.value);
+      const { email, password } = this.signInForm.value;
+      const loginData = { email, password };
+      this.authService.loginUser(loginData).subscribe({
+        next: (response: any) => {
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['']);
+        },
+        error: (error) => {
+          console.log('Error logging in:', error);
+        },
+      });
     } else {
-      console.log(this.signInForm.errors);
       this.signInForm.markAllAsTouched();
     }
   }
